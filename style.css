@@ -35,15 +35,14 @@ h2 {
     transform: translate(0px, 0px);
 }
 
-/* Фиксированная шапка */
 .topnav {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   background-color: #ffffff;
-  padding: 10px 0;
-  z-index: 999;
+  padding: 10px -50px;
+  z-index: 10;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -51,16 +50,17 @@ h2 {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-body {
-  margin: 0;
-  padding-top: 70px;
+/* Лого сдвигаем чуть правее */
+.logo img {
+  margin-left: 20px;
 }
 
 /* Бургер-кнопка */
 .burger {
-  font-size: 20px;
-  width: 40px;
-  height: 40px;
+  position: relative;
+  font-size: 18px;
+  width: 36px;
+  height: 36px;
   border-radius: 6px;
   background: transparent;
   color: #333;
@@ -69,16 +69,35 @@ body {
   align-items: center;
   justify-content: center;
   transition: background 0.3s;
+  margin-right: 10px;
+  overflow: hidden;
 }
+
+.burger::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background-color: #007bff;
+  transition: width 0.3s ease-in-out;
+}
+
+.burger:hover::after {
+  width: 100%;
+}
+
 
 .burger:hover {
   background-color: #f0f0f0;
 }
 
-/* Ссылки меню */
+/* Меню */
 .menu {
   display: flex;
   gap: 20px;
+  transform: translateX(-20px); /* Сдвигаем левее */
 }
 
 .menu a {
@@ -90,6 +109,7 @@ body {
   transition: color 0.3s;
 }
 
+/* Плавное подчёркивание */
 .menu a::after {
   content: '';
   position: absolute;
@@ -129,6 +149,7 @@ body {
     padding: 10px;
     border-radius: 8px;
     z-index: 1000;
+    transform: none;
   }
 
   .menu.active {
@@ -223,6 +244,28 @@ body {
     background-color: #0a70c7;
     transform: translateY(-3px);
 }
+@media screen and (max-width: 768px) {
+  .banner {
+    height: 320px; /* вместо 400px */
+    padding: 20px;
+  }
+
+  .web_title {
+    font-size: 32px;
+    line-height: 1.2;
+  }
+
+  .web_p {
+    font-size: 16px;
+  }
+
+  .banner .btn {
+    border: none;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  }
+}
 
 .services {
     display: flex;
@@ -308,9 +351,9 @@ body {
 .whyus-header {
     display: flex;
     flex-direction: column;
-    margin: 60px auto 0 auto;
+    margin: 15px auto 0 auto;
     gap: 20px;
-    padding: 30px 20px;
+    padding: 15px 0px;
     background-color: #ffffff;
     position: relative;
     z-index: 2;
@@ -320,6 +363,20 @@ body {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* лёгкая тень для глубины */
     max-width: 2000px; /* ограничение по ширине */
     width: 90%; /* адаптивность */
+}
+
+@media screen and (max-width: 768px) {
+  .whyus-header {
+    padding: 30px 16px;
+  }
+
+  .whyus-header-title {
+    font-size: 22px;
+  }
+
+  .whyus-header-description {
+    font-size: 16px;
+  }
 }
 
 .whyus-header-title {
@@ -495,25 +552,36 @@ button:hover {
 }
 
 .about-content {
-    background-color: #ffffff; /* Clean white background */
-    border-radius: 15px; /* Slightly larger border radius for a softer look */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    width: 90%; /* Responsive width */
-    max-width: 600px; /* Limit the maximum width */
-    padding: 30px; /* Add more padding for better spacing */
-    text-align: left; /* Align text to the left for readability */
-    font-size: 18px; /* Comfortable font size */
-    line-height: 1.8; /* Improve readability */
-    margin: 40px auto; /* Center the box with spacing */
-    color: #333; /* Neutral text color */
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 100%;
+    padding: 20px;
+    text-align: left;
+    font-size: 18px;
+    line-height: 1.8;
+    margin: 20px auto;
+    color: #333;
     transform: translate(0px, 30%);
     opacity: 0;
     transition: all 0.8s ease 0s;
+    box-sizing: border-box;
 }
 
+/* Анимация при активации */
 .about-content._active {
     transform: translate(0px, 0px);
     opacity: 1;
+}
+
+/* 🔽 Адаптация до 600px */
+@media (max-width: 600px) {
+    .about-content {
+        font-size: 16px;
+        padding: 15px;
+        margin: 10px;
+    }
 }
 
 .footer {

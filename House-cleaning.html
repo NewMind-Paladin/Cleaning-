@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>House Cleaning Services | Affordable Deep Cleaning in Ireland</title>
     <meta name="description" content="Professional house cleaning services in Ireland. Deep cleans, regular maintenance, and post-party cleanups. Book now!" />
-    <link rel="icon" href="cleaning.png" type="image/png">
+    <link rel="icon" href="cleaninglogo.png" type="image/png">
     <link href="style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
@@ -83,6 +83,32 @@
       <a href="House-cleaning-booking.html" class="btn">Book Online</a>
       <a href="Quote.html" class="btn">Get a Free Quote</a>
 </div>
+
+<!-- Floating Contact Widget -->
+<div class="contact-widget">
+  <button class="chat-toggle">
+    <i class="fas fa-comment-alt"></i>
+  </button>
+
+  <div class="contact-options">
+    <!-- WhatsApp Button -->
+    <button class="contact-btn whatsapp-btn" onclick="toggleWhatsAppForm()">
+      <i class="fab fa-whatsapp"></i>
+    </button>
+
+    <!-- Phone Button -->
+    <a href="tel:0852014429" class="contact-btn phone-btn">
+      <i class="fas fa-phone"></i>
+    </a>
+  </div>
+
+  <!-- WhatsApp Form -->
+  <div class="whatsapp-form" id="whatsappForm">
+    <div class="whatsapp-header">Write us on WhatsApp</div>
+    <textarea id="whatsappMessage" placeholder="Your Message..."></textarea>
+    <button onclick="sendToWhatsApp()">Send</button>
+  </div>
+</div>
     <footer class="footer">
         <div class="footer-column">
           <h2><i class="fas fa-broom"></i> Cleaning Company</h2>
@@ -127,6 +153,28 @@
             </div>
           </div>
       </footer>
+      <script>
+  document.querySelector('.chat-toggle').addEventListener('click', () => {
+    document.querySelector('.contact-options').classList.toggle('show');
+    document.getElementById('whatsappForm').style.display = 'none';
+  });
+
+  function toggleWhatsAppForm() {
+    const form = document.getElementById('whatsappForm');
+    form.style.display = form.style.display === 'flex' ? 'none' : 'flex';
+  }
+
+  function sendToWhatsApp() {
+    const message = document.getElementById('whatsappMessage').value.trim();
+    if (message) {
+      const phone = "353852014429";
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+    } else {
+      alert("Please enter a message");
+    }
+  }
+</script>
       <script>
   function toggleMenu() {
     const menu = document.querySelector('.menu');

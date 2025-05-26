@@ -41,7 +41,7 @@ h2 {
   left: 0;
   width: 100%;
   background-color: #ffffff;
-  padding: 10px -50px;
+  padding: 10px 0;
   z-index: 10;
   display: flex;
   justify-content: space-between;
@@ -71,10 +71,21 @@ h2 {
     display: none;
   }
 }
-/* Лого сдвигаем чуть правее */
+
+.logo {
+  display: flex;
+  align-items: center;
+  height: 60px; /* фиксируем высоту шапки */
+  overflow: hidden; /* обрезаем всё, что выходит за пределы */
+}
+
 .logo img {
   margin-left: 20px;
+  height: 1%; /* логотип занимает всю высоту контейнера */
+  width: auto;
+  object-fit: contain;
 }
+
 
 /* Бургер-кнопка */
 .burger {
@@ -584,17 +595,10 @@ button:hover {
     line-height: 1.8;
     margin: 20px auto;
     color: #333;
-    transform: translate(0px, 30%);
-    opacity: 0;
     transition: all 0.8s ease 0s;
     box-sizing: border-box;
 }
 
-/* Анимация при активации */
-.about-content._active {
-    transform: translate(0px, 0px);
-    opacity: 1;
-}
 
 /* 🔽 Адаптация до 600px */
 @media (max-width: 600px) {
@@ -1214,3 +1218,99 @@ button:hover {
     background-color: #2b4f6d;
 }
 
+.contact-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10000;
+}
+
+/* Главная кнопка - иконка чата */
+.chat-toggle {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 2;
+}
+
+/* Контактные кнопки */
+.contact-options {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  position: absolute;
+  bottom: 65px;
+  right: 0;
+  z-index: 1;
+}
+
+.contact-options.show {
+  display: flex;
+}
+
+.contact-btn {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none;
+  color: white;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-btn {
+  background-color: #25d366;
+}
+
+.phone-btn {
+  background-color: #28a745;
+}
+
+/* Форма WhatsApp */
+.whatsapp-form {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  width: 250px;
+  position: absolute;
+  bottom: 130px;
+  right: 0;
+}
+
+.whatsapp-form textarea {
+  resize: none;
+  height: 60px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.whatsapp-form button {
+  background-color: #25d366;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.whatsapp-header {
+  font-weight: bold;
+  color: #333;
+}

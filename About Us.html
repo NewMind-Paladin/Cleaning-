@@ -8,7 +8,7 @@
     <meta name="author" content="OkCleaning" />
     <meta name="robots" content="index, follow" />
     <title>Deep Cleaning Services | Ireland</title>
-    <link rel="icon" href="cleaning.png" type="image/png">
+    <link rel="icon" href="cleaninglogo.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
@@ -42,10 +42,10 @@
 </div>
     <div class="banner">
         <div class="banner-content">
-            <h1 class="web_title _anim-items _anim-no-hide">About "Cleaning Company"</h1>
+            <h1 class="web_title _anim-items _anim-no-hide ">About "Cleaning Company"</h1>
         </div>
     </div>
-    <div class="about-content _anim-items _anim-no-hide">
+    <div class="about-content ">
         <h2>Our Principles and Values</h2>
         <p>We are a professional cleaning company with many years of experience in helping clients maintain cleanliness and order in their homes and offices. We understand how important it is for your space to be not only clean but also cozy, which is why we offer services that meet the highest quality standards.
         We aim to make the cleaning process as convenient and efficient as possible, using modern methods and tools. Our team consists of qualified specialists who have undergone specialized training and possess vast experience in the cleaning industry.</p>
@@ -61,6 +61,35 @@
         <h2>Contact Us</h2>
         <p>If you have any questions or would like to schedule a cleaning, please contact us!</p>
     </div>
+
+
+    <!-- Floating Contact Widget -->
+<div class="contact-widget">
+  <button class="chat-toggle">
+    <i class="fas fa-comment-alt"></i>
+  </button>
+
+  <div class="contact-options">
+    <!-- WhatsApp Button -->
+    <button class="contact-btn whatsapp-btn" onclick="toggleWhatsAppForm()">
+      <i class="fab fa-whatsapp"></i>
+    </button>
+
+    <!-- Phone Button -->
+    <a href="tel:0852014429" class="contact-btn phone-btn">
+      <i class="fas fa-phone"></i>
+    </a>
+  </div>
+
+  <!-- WhatsApp Form -->
+  <div class="whatsapp-form" id="whatsappForm">
+    <div class="whatsapp-header">Write us on WhatsApp</div>
+    <textarea id="whatsappMessage" placeholder="Your Message..."></textarea>
+    <button onclick="sendToWhatsApp()">Send</button>
+  </div>
+</div>
+
+
 
     <footer class="footer">
         <div class="footer-column">
@@ -106,6 +135,28 @@
             </div>
           </div>
       </footer>
+      <script>
+  document.querySelector('.chat-toggle').addEventListener('click', () => {
+    document.querySelector('.contact-options').classList.toggle('show');
+    document.getElementById('whatsappForm').style.display = 'none';
+  });
+
+  function toggleWhatsAppForm() {
+    const form = document.getElementById('whatsappForm');
+    form.style.display = form.style.display === 'flex' ? 'none' : 'flex';
+  }
+
+  function sendToWhatsApp() {
+    const message = document.getElementById('whatsappMessage').value.trim();
+    if (message) {
+      const phone = "353852014429";
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+    } else {
+      alert("Please enter a message");
+    }
+  }
+</script>
 <script>
   function toggleMenu() {
     const menu = document.querySelector('.menu');
